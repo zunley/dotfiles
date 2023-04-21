@@ -1,22 +1,9 @@
 -- if nvim-tree is last buffer close it gracefully
-local modifiedBufs = function(bufs)
-    local t = 0
-    for k,v in pairs(bufs) do
-        if v.name:match("NvimTree_") == nil then
-            t = t + 1
-        end
-    end
-    return t
-end
-
 local close_nvim_tree = function()
-    if #vim.api.nvim_list_wins() == 1 and
-    vim.api.nvim_buf_get_name(0):match("nvimtree_") ~= nil and
-    modifiedBufs(vim.fn.getbufinfo({bufmodified = 1})) == 0 then
-        vim.cmd "quit"
+    if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+      vim.cmd "quit"
     end
 end
-
 
 local open_nvim_tree = function(data)
     local directory = vim.fn.isdirectory(data.file) == 1
@@ -30,10 +17,7 @@ local open_nvim_tree = function(data)
     require("nvim-tree.api").tree.open()
 end
 
--- Close nvim-tree when closing the only remaining buf.
-vim.api.nvim_create_autocmd("BufEnter", { nested = true, callback = close_nvim_tree })
--- Open nvim-tree when when open a folder.
-vim.api.nvim_create_autocmd({'VimEnter'}, { callback = open_nvim_tree })
+vim.keymap.set('n', '<F2>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
 
 local on_attach = function(bufnr)
     local api = require('nvim-tree.api')
@@ -56,7 +40,7 @@ local on_attach = function(bufnr)
     vim.keymap.set('n', '<C-]>',    api.tree.change_root_to_node,       opts('CD'))
 end
 
-require 'nvim-tree'.setup {
+require('nvim-tree').setup({
     auto_reload_on_write    = true,
     hijack_cursor           = false,
     sort_by                 = "case_sensitive",
@@ -77,4 +61,8 @@ require 'nvim-tree'.setup {
         },
     },
     on_attach = on_attach,
-}
+})
+-- Close nvim-tree when closing the only remaining buf.
+vim.api.nvim_create_autocmd({"BufEnter"}, { nested = true, callback = close_nvim_tree })
+-- Open nvim-tree when when open a folder.
+vim.api.nvim_create_autocmd({'VimEnter'}, { callback = open_nvim_tree })

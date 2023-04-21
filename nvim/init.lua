@@ -18,19 +18,6 @@ vim.opt.autowrite   = true -- auto save
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- load lua/plugins.lua
-require('plugins')
-require('configs.lsp')
-require('configs.lualine')
-require('configs.nvimtree')
-require('configs.bufferline')
-require('configs.toggleterm')
-require('configs.treesitter')
-require('configs.telescope')
-
-vim.g.material_style = "oceanic"
-vim.cmd('colorscheme material')
-
 -- keymaps
 vim.g.mapleader = ';'
 vim.keymap.set('n', '<C-h>', ':bp<cr>')
@@ -44,12 +31,16 @@ vim.keymap.set('i', '<C-l>', '<right>')
 vim.keymap.set('i', '<C-k>', '<up>')
 vim.keymap.set('i', '<C-j>', '<down>')
 
--- nvim-tree
-vim.keymap.set('n', '<F2>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
+-- load lua/plugins.lua
+require('plugins')
+require('configs.lsp')
+require('configs.lualine')
+require('configs.nvimtree')
+require('configs.bufferline')
+require('configs.toggleterm')
+require('configs.treesitter')
+require('configs.telescope')
 
--- telescope
-builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+-- colors
+vim.g.material_style = "oceanic"
+vim.cmd('colorscheme material')
