@@ -1,0 +1,2 @@
+set -x https_proxy  http://localhost:7890
+set -x http_proxy   http://localhost:7890
