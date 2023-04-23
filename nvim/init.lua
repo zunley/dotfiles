@@ -18,7 +18,7 @@ vim.opt.autowrite   = true -- auto save
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- keymaps
+-- global keymaps
 vim.g.mapleader = ';'
 vim.keymap.set('n', '<C-h>', ':bp<cr>')
 vim.keymap.set('n', '<C-l>', ':bn<cr>')
@@ -44,3 +44,6 @@ require('configs.telescope')
 -- colors
 vim.g.material_style = "oceanic"
 vim.cmd('colorscheme material')
+
+-- tagbar
+vim.keymap.set('n', '<F8>', ':TagbarToggle<cr>')
