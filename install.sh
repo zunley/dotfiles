@@ -22,8 +22,8 @@ link sakura
 
 # bash 
 echo Install bash
-ln -sf $DOTFILES/bash/bashrc $DOTCONFIG/.bashrc
-ln -sf $DOTFILES/bash/dircolors $DOTCONFIG/.dircolors
-if [ ! -f $DOTCONFIG/.bashlocal ]; then
-    cp -sf $DOTFILES/bash/bashlocal.template $DOTCONFIG/.bashlocal
+ln -sf $DOTFILES/bash/bashrc $HOME/.bashrc
+ln -sf $DOTFILES/bash/dircolors $HOME/.dircolors
+if [ ! -f $HOME/.bashlocal ]; then
+    cp -sf $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
 fi
