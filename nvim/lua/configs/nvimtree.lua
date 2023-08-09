@@ -17,7 +17,6 @@ local open_nvim_tree = function(data)
     require("nvim-tree.api").tree.open()
 end
 
-vim.keymap.set('n', '<F2>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
 
 local on_attach = function(bufnr)
     local api = require('nvim-tree.api')

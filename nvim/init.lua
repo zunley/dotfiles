@@ -8,9 +8,9 @@ vim.opt.swapfile        = false
 
 vim.opt.autoindent  = true
 vim.opt.shiftround  = true
-vim.opt.tabstop     = 4
-vim.opt.shiftwidth  = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop     = 2
+vim.opt.shiftwidth  = 2
+vim.opt.softtabstop = 2
 vim.opt.mouse       = 'c'
 vim.opt.expandtab   = true
 vim.opt.autowrite   = true -- auto save
@@ -45,5 +45,5 @@ require('configs.toggleterm')
 vim.g.material_style = "oceanic"
 vim.cmd('colorscheme material')
 
--- tagbar
+vim.keymap.set('n', '<F2>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
 vim.keymap.set('n', '<F8>', ':TagbarToggle<cr>')
