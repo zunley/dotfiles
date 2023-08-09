@@ -33,13 +33,13 @@ vim.keymap.set('i', '<C-j>', '<down>')
 
 -- load lua/plugins.lua
 require('plugins')
-require('configs.lsp')
+-- require('configs.lsp')
 require('configs.lualine')
 require('configs.nvimtree')
 require('configs.bufferline')
 require('configs.toggleterm')
-require('configs.treesitter')
-require('configs.telescope')
+-- require('configs.treesitter')
+-- require('configs.telescope')
 
 -- colors
 vim.g.material_style = "oceanic"

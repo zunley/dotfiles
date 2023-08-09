@@ -12,8 +12,7 @@ function link
         echo "Error: please specify a vaild target!"
         exit 1
     fi
-    echo "Install $target"
-    ln -sf $DOTFILES/$target $DOTCONFIG/$target
+    ln -svfT $DOTFILES/$target $DOTCONFIG/$target
 }
 
 link fish
@@ -22,8 +21,8 @@ link sakura
 
 # bash 
 echo Install bash
-ln -sf $DOTFILES/bash/bashrc $HOME/.bashrc
-ln -sf $DOTFILES/bash/dircolors $HOME/.dircolors
+ln -svfT $DOTFILES/bash/bashrc $HOME/.bashrc
+ln -svfT $DOTFILES/bash/dircolors $HOME/.dircolors
 if [ ! -f $HOME/.bashlocal ]; then
     cp -sf $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
 fi
