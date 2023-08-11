@@ -18,7 +18,7 @@ require("lazy").setup({
     },
     'nvim-tree/nvim-web-devicons',
     -- Colorscheme
-	'marko-cerovac/material.nvim',
+	  'marko-cerovac/material.nvim',
     -- Status Line
     'nvim-lualine/lualine.nvim',
     -- File Explorer
