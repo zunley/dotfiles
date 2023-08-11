@@ -8,7 +8,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 require('toggleterm').setup{
     open_mapping = [[<c-\>]],
-    direction = 'horizontal',
+    direction = 'float',
     shell = vim.o.shell ,
     insert_mappings = true,
     terminal_mappings = true,
