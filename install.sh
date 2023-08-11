@@ -15,9 +15,7 @@ function link
     ln -svfT $DOTFILES/$target $DOTCONFIG/$target
 }
 
-link fish
 link nvim
-link sakura
 
 # bash 
 echo Install bash
