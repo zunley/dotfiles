@@ -2,7 +2,7 @@
 
 set -o nounset
 
-DOTFILES="$HOME/projects/dotfiles"
+DOTFILES=$(dirname $(readlink -f $0))
 DOTCONFIG="$HOME/.config"
 
 function link
@@ -15,12 +15,22 @@ function link
     ln -svfT $DOTFILES/$target $DOTCONFIG/$target
 }
 
+if [ ! -d $DOTCONFIG ]; then
+    mkdir $DOTCONFIG
+fi
+
+# nvim
+echo 'Install Neovim'
 link nvim
 
 # bash 
-echo Install bash
+echo 'Install Bash'
 ln -svfT $DOTFILES/bash/bashrc $HOME/.bashrc
 ln -svfT $DOTFILES/bash/dircolors $HOME/.dircolors
 if [ ! -f $HOME/.bashlocal ]; then
     cp -sf $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
 fi
+
+# vim
+echo 'Install Vim'
+ln -svfT $DOTFILES/vim/vimrc $HOME/.vimrc

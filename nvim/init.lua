@@ -45,5 +45,5 @@ require('configs.toggleterm')
 vim.g.material_style = "oceanic"
 vim.cmd('colorscheme material')
 
-vim.keymap.set('n', '<F2>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
+vim.keymap.set('n', '<F4>', ':NvimTreeToggle<cr>') -- open or close nvim-tree
 vim.keymap.set('n', '<F8>', ':TagbarToggle<cr>')
