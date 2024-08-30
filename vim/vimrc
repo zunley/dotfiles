@@ -6,5 +6,7 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-set cindent
-set smartindent
+set nobackup
+set nowritebackup
+set noswapfile
+set encoding=utf-8
