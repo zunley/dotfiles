@@ -10,3 +10,4 @@ set nobackup
 set nowritebackup
 set noswapfile
 set encoding=utf-8
+highlight LineNr ctermfg=250 guifg=#BBBBBB
