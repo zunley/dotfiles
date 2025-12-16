@@ -1,5 +1,6 @@
 syntax on
 filetype on
+filetype plugin on "启用文件类型插件
 set nocompatible
 set mouse=c
 set expandtab

@@ -19,9 +19,9 @@ if [ ! -d $DOTCONFIG ]; then
     mkdir $DOTCONFIG
 fi
 
-# nvim
-echo 'Install Neovim'
-link nvim
+## nvim
+#echo 'Install Neovim'
+#link nvim
 
 # bash 
 echo 'Install Bash'
@@ -34,3 +34,4 @@ fi
 # vim
 echo 'Install Vim'
 ln -svfT $DOTFILES/vim/vimrc $HOME/.vimrc
+ln -svfT $DOTFILES/vim/ftplugin $HOME/.vim/ftplugin
