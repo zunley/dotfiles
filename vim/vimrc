@@ -12,3 +12,56 @@ set nowritebackup
 set noswapfile
 set encoding=utf-8
 highlight LineNr ctermfg=250 guifg=#BBBBBB
+
+" ==========================
+" 基本 netrw 设置
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+let g:netrw_keepdir = 0
+let g:netrw_fastbrowse = 1
+let g:netrw_localrmdir = 'rm -r'
+
+" 打开左侧目录树
+nnoremap <leader>e :Lexplore<CR>
+
+" ==========================
+" netrw 内部快捷键
+augroup netrw_maps
+  autocmd!
+  autocmd FileType netrw nnoremap <buffer> q :close<CR>
+  autocmd FileType netrw nnoremap <buffer> h -
+  autocmd FileType netrw nnoremap <buffer> l <CR>
+  autocmd FileType netrw nnoremap <buffer> . gh
+augroup END
+
+" ==========================
+" <leader>q 关闭窗口，如果只剩 netrw 则退出 Vim
+function! CloseWindowOrQuit()
+  " 如果当前是最后一个窗口，直接退出 Vim
+  if winnr('$') == 1
+    qa
+    return
+  endif
+
+  " 关闭当前窗口
+  close
+
+  " 检查除了 netrw 是否还有其他窗口
+  let l:non_netrw = 0
+  for w in range(1, winnr('$'))
+    let b = winbufnr(w)
+    if getbufvar(b, '&filetype') !=# 'netrw'
+      let l:non_netrw += 1
+    endif
+  endfor
+
+  " 如果没有非 netrw 窗口，退出 Vim
+  if l:non_netrw == 0
+    qa
+  endif
+endfunction
+
+" 映射 <leader>q
+nnoremap <silent> <leader>q :call CloseWindowOrQuit()<CR>
+
