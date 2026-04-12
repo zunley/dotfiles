@@ -33,20 +33,25 @@ echo 'Install Bash'
 ln -svf $DOTFILES/bash/bashrc $HOME/.bashrc
 ln -svf $DOTFILES/bash/dircolors $HOME/.dircolors
 if [ ! -f $HOME/.bashlocal ]; then
-    cp -sf $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
+    cp -f $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
+    echo 'Created ~/.bashlocal from template'
 fi
 
 # zsh
 echo 'Install Zsh'
 ln -svf $DOTFILES/zsh/zshrc $HOME/.zshrc
 if [ ! -f $HOME/.zshlocal ]; then
-    cp -sf $DOTFILES/zsh/zshlocal.template $HOME/.zshlocal
+    cp -f $DOTFILES/zsh/zshlocal.template $HOME/.zshlocal
+    echo 'Created ~/.zshlocal from template'
 fi
 
 # vim
 echo 'Install Vim'
 ln -svf $DOTFILES/vim/vimrc $HOME/.vimrc
-ln -svf $DOTFILES/vim/ftplugin $HOME/.vim/ftplugin
+if [ ! -d $HOME/.vim/ftplugin ]; then
+    mkdir -p $HOME/.vim/ftplugin
+fi
+ln -svf $DOTFILES/vim/ftplugin/* $HOME/.vim/ftplugin/
 
 # System-specific configurations
 if [ "$SYSTEM_TYPE" = "Darwin" ]; then

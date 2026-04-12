@@ -3,13 +3,9 @@
 # Enable colors
 autoload -U colors && colors
 
-# Set LS colors
-if [ -f ~/.dircolors ]; then
-    eval "$(dircolors -b ~/.dircolors)"
-fi
-
 # Set prompt
-PROMPT='%F{#ff5f56}%n%f@%F{#ff5f56}%m%f %F{#87afaf}%~%f %F{#87afaf}%n%f\n$ '
+PROMPT='%F{#ff5f56}%n%f@%F{#ff5f56}%m%f %F{#87afaf}%~%f
+$ '
 
 # Aliases
 alias ls='ls --color=auto'
@@ -34,3 +30,8 @@ setopt HIST_REDUCE_BLANKS
 # Set options
 setopt AUTO_CD
 setopt PROMPT_SUBST
+
+# Set LS colors
+if [ -f ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+fi
