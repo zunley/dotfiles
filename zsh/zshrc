@@ -1,0 +1,36 @@
+# ~/.zshrc: executed by zsh(1) for non-login shells.
+
+# Enable colors
+autoload -U colors && colors
+
+# Set LS colors
+if [ -f ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+fi
+
+# Set prompt
+PROMPT='%F{#ff5f56}%n%f@%F{#ff5f56}%m%f %F{#87afaf}%~%f %F{#87afaf}%n%f\n$ '
+
+# Aliases
+alias ls='ls --color=auto'
+
+# Load local configuration
+if [ -f ~/.zshlocal ]; then
+    source ~/.zshlocal
+fi
+
+# Enable completions
+autoload -U compinit
+compinit
+
+# Set history settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# Set options
+setopt AUTO_CD
+setopt PROMPT_SUBST

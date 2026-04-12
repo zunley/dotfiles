@@ -1,0 +1,13 @@
+# Local zsh configuration
+# This file is sourced by ~/.zshrc
+
+# Add your custom aliases and functions here
+
+# Example:
+# alias ll='ls -la'
+# alias gs='git status'
+
+# Add your custom environment variables here
+
+# Example:
+# export PATH=$PATH:/usr/local/bin

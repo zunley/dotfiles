@@ -12,12 +12,17 @@ function link
         echo "Error: please specify a vaild target!"
         exit 1
     fi
-    ln -svfT $DOTFILES/$target $DOTCONFIG/$target
+    ln -svf $DOTFILES/$target $DOTCONFIG/$target
 }
 
 if [ ! -d $DOTCONFIG ]; then
-    mkdir $DOTCONFIG
+    mkdir -p $DOTCONFIG
 fi
+
+# Detect system type
+SYSTEM_TYPE=$(uname -s)
+
+echo "Detected system: $SYSTEM_TYPE"
 
 ## nvim
 #echo 'Install Neovim'
@@ -25,13 +30,29 @@ fi
 
 # bash 
 echo 'Install Bash'
-ln -svfT $DOTFILES/bash/bashrc $HOME/.bashrc
-ln -svfT $DOTFILES/bash/dircolors $HOME/.dircolors
+ln -svf $DOTFILES/bash/bashrc $HOME/.bashrc
+ln -svf $DOTFILES/bash/dircolors $HOME/.dircolors
 if [ ! -f $HOME/.bashlocal ]; then
     cp -sf $DOTFILES/bash/bashlocal.template $HOME/.bashlocal
 fi
 
+# zsh
+echo 'Install Zsh'
+ln -svf $DOTFILES/zsh/zshrc $HOME/.zshrc
+if [ ! -f $HOME/.zshlocal ]; then
+    cp -sf $DOTFILES/zsh/zshlocal.template $HOME/.zshlocal
+fi
+
 # vim
 echo 'Install Vim'
-ln -svfT $DOTFILES/vim/vimrc $HOME/.vimrc
-ln -svfT $DOTFILES/vim/ftplugin $HOME/.vim/ftplugin
+ln -svf $DOTFILES/vim/vimrc $HOME/.vimrc
+ln -svf $DOTFILES/vim/ftplugin $HOME/.vim/ftplugin
+
+# System-specific configurations
+if [ "$SYSTEM_TYPE" = "Darwin" ]; then
+    echo 'Applying macOS specific configurations'
+    # Add macOS specific configurations here
+elif [ "$SYSTEM_TYPE" = "Linux" ]; then
+    echo 'Applying Linux specific configurations'
+    # Add Linux specific configurations here
+fi
